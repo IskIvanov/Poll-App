@@ -1,5 +1,22 @@
 .App {
-  text-align: center;
+	width: 330px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.input-admin{
+	border: 0px;
+    border-bottom: 1px solid;
+    width: 258px;
+    margin: 10px;
+    margin-bottom: 40px;
+    padding: 6px;
+}
+
+.button{
+	margin: 8px !important;
+    padding-bottom: 8px !important;
 }
 
 .App-logo {
