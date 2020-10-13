@@ -3,22 +3,27 @@ import OptionsForm from './OptionsForm';
 import Option from './Option';
 import "../scss/App.scss";
 
-function App() {
+function PollForm(options) {
   const [options, setOptions] = useState([
-   
   ]);
 
-  const handleReset = () => {
+  const [question, setQuestion] = useState('My Question')
+
+
+  const resetOptions = () => {
 	setOptions([]);
   }
 
   const addOption = text => {
-    const newTodos = [...options, { text }];
-    setOptions(newTodos);
+	const newTodos = [...options, { text }];
+	console.log(newTodos.length);
+	if( newTodos.length < 10) {
+		setOptions(newTodos);
+	}
   };
 
 
-  const removeTodo = index => {
+  const removeOptions = index => {
     const newTodos = [...options];
     newTodos.splice(index, 1);
     setOptions(newTodos);
@@ -28,22 +33,26 @@ function App() {
     <div className="app">
       <div className="todo-list">
         
+		<input value={question}  className="input" onChange={(e) => setQuestion(e.target.value)} ></input>
+
 		{options.map((todo, index) => (
           <Option
             key={index}
             index={index}
             todo={todo}
-            removeTodo={removeTodo}
+            removeOptions={removeOptions}
           />
         ))}
 		
         <OptionsForm addOptions={addOption} />
 		
-		<button onClick={handleReset}>Reset</button>
+		
+		<span> {options.length}/10 possible answers	</span>
+		<button onClick={resetOptions}>Reset</button>
 
       </div>
     </div>
   );
 }
 
-export default App;
+export default PollForm;

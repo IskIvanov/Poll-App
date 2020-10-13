@@ -1,7 +1,7 @@
 import React from "react";
 import "../scss/App.scss";
 
-function Option({ todo, index, removeTodo }) {
+function Option({ todo, index, removeOptions }) {
 	return (
 	  <div
 		className="todo"
@@ -10,7 +10,7 @@ function Option({ todo, index, removeTodo }) {
 		{todo.text}
   
 		<div>
-		  <button onClick={() => removeTodo(index)}>X</button>
+		  <button onClick={() => removeOptions(index)}>X</button>
 		</div>
 
 	  </div>
