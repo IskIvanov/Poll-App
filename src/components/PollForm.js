@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import OptionsForm from './OptionsForm';
+import { useDispatch } from 'react-redux';
 import Option from './Option';
+import { addTodo } from '../state/actionCreators';
 import "../scss/App.scss";
 
-function PollForm(options) {
+function PollForm() {
   const [options, setOptions] = useState([
   ]);
 
   const [question, setQuestion] = useState('My Question')
 
+  const dispatch = useDispatch()
 
   const resetOptions = () => {
 	setOptions([]);
   }
 
-  const addOption = text => {
-	const newTodos = [...options, { text }];
-	console.log(newTodos.length);
-	if( newTodos.length < 10) {
-		setOptions(newTodos);
-	}
-  };
+//   const addOption = text => {
+// 	const newTodos = [...options, { text }];
+// 	console.log(newTodos.length);
+// 	if( newTodos.length < 10) {
+// 		setOptions(newTodos);
+// 	}
+//   };
 
 
   const removeOptions = index => {
@@ -44,11 +47,11 @@ function PollForm(options) {
           />
         ))}
 		
-        <OptionsForm addOptions={addOption} />
+        {/* <OptionsForm addOptions={addOption} /> */}
 		
 		
 		<span> {options.length}/10 possible answers	</span>
-		<button onClick={resetOptions}>Reset</button>
+		<button onClick={dispatch(addTodo('add'))}>Reset</button>
 
       </div>
     </div>
